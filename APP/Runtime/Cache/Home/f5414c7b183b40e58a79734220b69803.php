@@ -36,6 +36,22 @@
                         <label id="pwd-pic"class="login-label pwd-label" for="loginpwd"></label>
                         <input class="login" id="login-pwd" type="password" name="login-pwd" placeholder="密　码"/>
                     </div>
+                    
+                    
+                                    
+                    <!--验证码框及其显示-->
+                    <div class="checked-1">
+                    	<img src="/jiaolianyuan/index.php/Home/Login/verify"  alt="验证码"/>
+                    </div>
+                    <br />
+                     <div class="login-box">
+                     	<span id="verify"class="login-label name-label" for="verify"></span>
+                        <input class="login" id="verify" type="text" name="verify" placeholder="验证码"/>
+                      </div>
+                    
+                    
+                    
+                    
                     <span class="checked-1">
                        <input class="" type="radio" name="position" checked="checked" name="user"  value="e-commerce">学员
                    </span>

@@ -7,6 +7,61 @@
 		<script type="text/javascript" src="/jiaolianyuan/Public/js/jquery-2.2.1.min.js"></script>
 		<script type="text/javascript" src="/jiaolianyuan/Public/js/coach.js"></script>
 		<link rel="stylesheet" type="text/css" href="/jiaolianyuan/Public/CSS/style.css"/>
+		
+		
+		
+		<script>
+		//获取课程下的班级
+		var cname=0;
+				$(function(){
+					$(".nav-left ul li span").mouseover(function(){
+				
+				//获取一级分类id
+				cname = $(this).html();
+				
+			$.ajax({
+					contentType:"application/json",
+					type:"get",
+					url:"http://localhost/jiaolianyuan/index.php/Home/Index/getClassList",
+					data:{"cname":cname},
+					dataType:"json",
+					cache:"false",
+					async:true,
+					success: function(datac){
+                        // datac.data[0].id 为班级id,以后可以加在链接上+++
+                       //在下面执行append追加前先清除掉原先的，不然后重叠
+                     $('.children-list li').detach();
+                     if(datac.ret == 200)
+                      {
+						for (var i=0;i<datac.data.length;i++) {
+                            //动态生成结点,并赋值id,二级分类名,二级分类对应的id,即cid
+							$('.children-list ').append('<li><a href="javascript:;">'+datac.data[i].classname+'</a></li>');
+						     }
+					   }
+					   //该课程尚无班级
+					   else
+					   {
+							$('.children-list ').append('<li><a href="javascript:;">'+datac.data+'</a></li>');
+					   }
+ 
+
+					},
+					error: function(datac){
+						alert("出错啦")
+					}
+					
+					
+					
+			});
+//					
+			});
+				})
+					
+</script>
+		
+		
+		
+		
 	</head>
 	<body>
 		<div class="contianer">
@@ -50,10 +105,14 @@
 						<div class="nav-left">
 							
 							<ul>
+								<!--循环遍历课程名-->
 								<?php if(is_array($getCourseCate)): $i = 0; $__LIST__ = $getCourseCate;if( count($__LIST__)==0 ) : echo "暂无数据" ;else: foreach($__LIST__ as $key=>$list): $mod = ($i % 2 );++$i;?><li class="first-list"><a href="javascript:;"><span><?php echo ($list['cname']); ?></span></a>
 									<hr />
 										<ul class="children-list">
-								<?php if(is_array($classList)): $i = 0; $__LIST__ = $classList;if( count($__LIST__)==0 ) : echo "暂无数据" ;else: foreach($__LIST__ as $key=>$classList): $mod = ($i % 2 );++$i;?><li><a href="javascript:;"><?php echo ($classList['classname']); ?></a></li><?php endforeach; endif; else: echo "暂无数据" ;endif; ?>
+								<!--<?php if(is_array($classList)): $i = 0; $__LIST__ = $classList;if( count($__LIST__)==0 ) : echo "暂无数据" ;else: foreach($__LIST__ as $key=>$classList): $mod = ($i % 2 );++$i;?>-->
+
+											<li><a href="javascript:;"><?php echo ($classList['classname']); ?></a></li>
+											<!--<?php endforeach; endif; else: echo "暂无数据" ;endif; ?>-->
 											
 										</ul>
 									

@@ -7,6 +7,61 @@
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-2.2.1.min.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/js/coach.js"></script>
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/CSS/style.css"/>
+		
+		
+		
+		<script>
+		//获取课程下的班级
+		var cname=0;
+				$(function(){
+					$(".nav-left ul li span").mouseover(function(){
+				
+				//获取一级分类id
+				cname = $(this).html();
+				
+			$.ajax({
+					contentType:"application/json",
+					type:"get",
+					url:"http://localhost/jiaolianyuan/index.php/Home/Index/getClassList",
+					data:{"cname":cname},
+					dataType:"json",
+					cache:"false",
+					async:true,
+					success: function(datac){
+                        // datac.data[0].id 为班级id,以后可以加在链接上+++
+                       //在下面执行append追加前先清除掉原先的，不然后重叠
+                     $('.children-list li').detach();
+                     if(datac.ret == 200)
+                      {
+						for (var i=0;i<datac.data.length;i++) {
+                            //动态生成结点,并赋值id,二级分类名,二级分类对应的id,即cid
+							$('.children-list ').append('<li><a href="javascript:;">'+datac.data[i].classname+'</a></li>');
+						     }
+					   }
+					   //该课程尚无班级
+					   else
+					   {
+							$('.children-list ').append('<li><a href="javascript:;">'+datac.data+'</a></li>');
+					   }
+ 
+
+					},
+					error: function(datac){
+						alert("出错啦")
+					}
+					
+					
+					
+			});
+//					
+			});
+				})
+					
+</script>
+		
+		
+		
+		
 	</head>
 	<body>
 		<div class="contianer">
@@ -50,14 +105,15 @@
 						<div class="nav-left">
 							
 							<ul>
+								<!--循环遍历课程名-->
 								<volist name = "getCourseCate" id = "list" empty = "暂无数据">
 								<li class="first-list"><a href="javascript:;"><span>{$list['cname']}</span></a>
 									<hr />
 										<ul class="children-list">
-								<volist name = "classList" id = "classList" empty = "暂无数据">
+								<!--<volist name = "classList" id = "classList" empty = "暂无数据">-->
 
 											<li><a href="javascript:;">{$classList['classname']}</a></li>
-											</volist>
+											<!--</volist>-->
 											
 										</ul>
 									

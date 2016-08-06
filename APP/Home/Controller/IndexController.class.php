@@ -8,8 +8,8 @@ class IndexController extends Controller {
     	$getCourseCate = $this -> getCourseCate();
 		$this -> assign('getCourseCate', $getCourseCate);
 		
-		$classList = $this -> getClassList();
-		$this -> assign('classList',$classList);
+		// $classList = $this -> getClassList();
+		// $this -> assign('classList',$classList);
 		
 		$hotClassList = $this -> hotClass();
 		$this -> assign('hotClassList',$hotClassList);
@@ -34,7 +34,7 @@ class IndexController extends Controller {
 	    public function getCourseCate()
 	 {
 	 	$cate = M("course");
-		$getCourseCate = $cate -> field('cname') -> select();
+		$getCourseCate = $cate -> field('id,cname') -> select();
 		return $getCourseCate;
 //		var_dump($getCourseCate);
 		// $this -> assign('getCourseCate', $getCourseCate);
@@ -47,9 +47,35 @@ class IndexController extends Controller {
 		 */
 		public function getClassList()
 	 {
+	 	// $cname = $_GET['cname'];
+	     // $cname = "PHP工程师";
+         $where['cname'] = $_GET['cname'];
 	 	 $class = M("class");
-		 $classList = $class -> field('id,className') ->select();
-		 return $classList;
+		 $course = M('course');
+		 //获取分类栏课程的id
+		 $courseId = $course -> field('id') -> where($where) -> select(); 
+         $courseId = (int)($courseId[0]['id']);
+
+		
+		 $classList = $class -> field('id,className') ->where('classCate='.$courseId) ->select();
+		 if ($classList  != NULL) {
+			$return["ret"] = "200";
+			$return["data"] = $classList;
+			$return["msg"] = "";
+			// S("$cacheIndex",$return,120); //写入缓存，时间120s  
+			$this -> ajaxReturn($return);
+		} 
+		else 
+		{
+			$return["ret"] = "400";
+			//无班级
+			$return["data"] = "此课程暂无班级";
+			$return["msg"] = "";
+			// S("$cacheIndex",$return,120); //写入缓存，时间120s  
+			$this -> ajaxReturn($return);
+		}
+		 // var_dump($classList);
+		 // return $classList;
 		
 	}	
 	 
@@ -71,7 +97,6 @@ class IndexController extends Controller {
 	  */
 	 	public function phpEngineer() 
 		{
-
 		 $course = M('course');
 		 $class = M("class");
 		 $cname = 'PHP工程师';
