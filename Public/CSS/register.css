@@ -1,0 +1,263 @@
+﻿@CHARSET "UTF-8";
+
+/****************reset****************/
+body,h1,h2,h3,h4,h5,h6,p,form,input{
+	margin:0;
+	padding:0;
+}
+b{
+	font-weight:normal;
+}
+a{
+	text-decoration:none;
+}
+img{
+	border:none; 
+	vertical-align:top;
+}
+
+/****************end reset****************/
+
+/****************register****************/
+body{
+	background:url(../images/bg.gif) repeat-x;
+}
+#logo{
+	width:960px;
+	height:80px;
+	margin:0 auto;
+	position:relative;
+}
+#logo img{
+	position:absolute;
+	left:0;
+	top:10px;
+}
+#logo b{
+	background:url(../images/wc-txt2.png) no-repeat;
+	display:block;
+	height:36px;
+	width:150px;
+	position:absolute;
+	top:20px;
+	left:194px;
+
+}
+#warp {
+	width:100%;
+	height:500px;
+	z-index:1;
+	background:#334454;
+}
+#bg-pic{
+	height:500px;
+	width:988px;
+	margin:0 auto;
+	z-index:2;
+	background:url(../images/bg-pic.jpg) no-repeat;
+}
+#register{
+	height:480px;
+	float:right;
+	width:348px;
+	position:relative;
+	top:10px;
+	z-index:3;
+	background:#F2F2F2;
+	border:1px solid #e1e1e1;
+	border-radius:10px;
+}
+.register-form h2{
+	height:36px;
+	width:180px;
+	line-height:36px;
+	color:#666;
+	position:relative;
+	top:12px;
+	left:20px;
+	font-weight:normal;
+}
+.register-form b{
+	position:absolute;
+	top:20px;
+	right:68px;
+	color:#666;
+	font-size:14px;
+}
+.register-form a{
+	font-family:"微软雅黑";
+	color:#097BF8;
+	font-size:12px;
+	float:right;
+	position:absolute;
+	top:22px;
+	right:20px;	
+}
+.register-form a:hover,.clause a:hover{
+	text-decoration:underline;
+	color:#55A7FC;
+}
+
+.register-box{
+	width:310px;
+	height:38px;
+	border:1px solid #e1e1e1;
+	position:relative;
+	top:25px;
+	left:0;
+	border-radius:5px;
+	margin:0 auto 16px;
+}
+.register-box:hover,.codes-box:hover{
+	border-color:#097BF8;
+}
+.codes-box{
+	width:200px;
+	height:36px;
+	border:1px solid #e1e1e1;
+	border-radius:5px;
+	position:relative;
+	top:25px;
+	left:20px;
+	margin-bottom:16px;
+}
+.codes{
+	position:relative;
+	left:8px;
+	top:10px;
+	border:none;
+	background:none;
+	outline:none;
+	width:192px;
+	font-size:14px;
+	color:#666;
+}
+#codes-btn{
+	position:absolute;
+	top:0;
+	right:-108px;
+	height:36px;
+	width:92px;
+	background:#F2F2F2;
+	border:1px solid #e1e1e1;
+	color:#666;
+	border-radius:5px;
+	line-height:32px;
+}
+#codes-btn:hover{
+	background:#e1e1e1;
+}
+.register,.pwd{
+	position:relative;
+	left:8px;
+	top:9px;
+	border:none;
+	background:none;
+	outline:none;
+	width:300px;
+	font-size:14px;
+	color:#666;
+}
+.checked{
+	position:relative;
+	top:2px;
+	left:0px;
+}
+.checked-1,.checked-2{
+	height:25px;
+	line-height:25px;
+	width:50px;
+	position:relative;
+	color:#666;
+	font-size:14px;
+	display:block;
+}
+.checked-1{
+	top:24px;
+	left:20px;
+}
+.checked-2{
+	right:20px;
+	float:right;
+	top:0px;	
+}
+
+#register-btn{
+	position:relative;
+	top:25px;
+	left:20px;
+	margin:-10px auto;
+	width:304px;
+	height:44px;
+	background: url(../images/register-btn.png) no-repeat;
+	border-radius:6px;
+	cursor:pointer;
+	border:none;
+}
+#register-btn:hover{
+	background:url(../images/register-btn2.png);
+}
+.clause{
+	position:relative;
+	top:58px;
+	left:20px;
+	font-size:12px;
+	font-family:"宋体";
+	color:#666;
+}
+.agree-clause{
+	position:relative;
+	top:3px;
+	left:0px;
+}
+.clause a{
+	color:#097BF8;
+}
+.safe{
+	position:relative;
+	font-size:12px;
+	line-height:25px;
+	font-family:"宋体";
+	color:#666;
+	height:25px;
+	width:306px;
+	margin:0 auto;
+	top:85px;
+	left:0px;
+}
+.safe a{
+	position:relative;
+	top:0px;
+	right:0px;
+	color:#666;
+	float:right;
+}
+.safe a:hover,.foot-ali a:hover{
+	color:#097BF8;
+}
+
+.foot-ali{
+	font-size:14px;
+	width:100%;
+	margin-top:80px;
+	margin-bottom:20px;
+	float:right;
+	text-align:center;
+	border-top:1px solid #fff;
+	height:18px;
+	padding-top:15px;
+
+}
+.foot-ali b{
+	color:#fff;
+	font-weight:normal;
+	margin:0 4px;
+}
+.foot-ali a{
+	color:#fff;
+	text-decoration:none;
+	margin:0 4px;
+}
+
+
+/****************end register****************
