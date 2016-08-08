@@ -8,9 +8,6 @@ class IndexController extends Controller {
     	$getCourseCate = $this -> getCourseCate();
 		$this -> assign('getCourseCate', $getCourseCate);
 		
-		// $classList = $this -> getClassList();
-		// $this -> assign('classList',$classList);
-		
 		$hotClassList = $this -> hotClass();
 		$this -> assign('hotClassList',$hotClassList);
 
@@ -23,7 +20,6 @@ class IndexController extends Controller {
 	
 	
 	  /** 
-		* getFirstCate 
 		* 
 		* 获取课程分类栏
 		* 
@@ -33,11 +29,9 @@ class IndexController extends Controller {
 		*/ 
 	    public function getCourseCate()
 	 {
-	 	$cate = M("course");
+	 	$cate = M("cate");
 		$getCourseCate = $cate -> field('id,cname') -> select();
 		return $getCourseCate;
-//		var_dump($getCourseCate);
-		// $this -> assign('getCourseCate', $getCourseCate);
     
 	 }
 		
@@ -51,7 +45,7 @@ class IndexController extends Controller {
 	     // $cname = "PHP工程师";
          $where['cname'] = $_GET['cname'];
 	 	 $class = M("class");
-		 $course = M('course');
+		 $course = M('cate');
 		 //获取分类栏课程的id
 		 $courseId = $course -> field('id') -> where($where) -> select(); 
          $courseId = (int)($courseId[0]['id']);
@@ -97,7 +91,7 @@ class IndexController extends Controller {
 	  */
 	 	public function phpEngineer() 
 		{
-		 $course = M('course');
+		 $course = M('cate');
 		 $class = M("class");
 		 $cname = 'PHP工程师';
 		 $where['cname'] = $cname;

@@ -5,14 +5,13 @@ class RegisterController extends Controller {
     public function register(){
     	
     	$this -> display();
-        
+		
     }
+	
 
     public function do_register()
     {
-    		$this -> check_verify();  //检测验证码是否正确
-//  		$this -> checkPhoneMessage();
-//			&& $_POST['mes-codes'] == $param
+      $this -> check_verify();  //检测验证码是否正确
     	// 学生注册
     	if($_POST['position']=="student")
 		{
@@ -20,10 +19,10 @@ class RegisterController extends Controller {
 			{
 				if($_POST['set-pwd'] ==$_POST['confirm-pwd'] )
 				{
-//					if($_POST['mes-codes'] != "" && $_POST['mes-codes'] == $param) //手机验证码比较
-//					{
-	
-				    //判断这些字段有没有空的，两个验证码先不加
+					if($_POST['mes-codes'] != "" && $_POST['mes-codes'] == session('phoneCode') ) //手机验证码比较
+					{
+	                   session('phoneCode',null); //验证码正确,清除
+				    //判断这些字段有没有空的
 					if($_POST['register-phone']!=""&&$_POST['set-pwd']!=""&&$_POST['confirm-pwd']!="")
 					{   
 					     $student = M('student');
@@ -77,12 +76,12 @@ class RegisterController extends Controller {
 			    	     $this->error("注册失败", U('Home/Register/register'),3);
 			          }
 					  
-//			       } //手机验证码
-//			       else
-//			          {
-//			    	     echo "<script>alert('手机验证码错误');</script>";
-//			    	     $this->error("注册失败", U('Home/Register/register'),3);
-//			          }
+			       } //手机验证码
+			       else
+			          {
+			    	     echo "<script>alert('手机验证码错误');</script>";
+			    	     $this->error("注册失败", U('Home/Register/register'),3);
+			          }
 			        
 			    }//两次密码是否一致
 			     else
@@ -104,6 +103,10 @@ class RegisterController extends Controller {
 			{
 				if($_POST['set-pwd'] ==$_POST['confirm-pwd'] )
 				{
+						
+					if($_POST['mes-codes'] != "" && $_POST['mes-codes'] == session('phoneCode') ) //手机验证码比较
+					{
+	                   session('phoneCode',null); //验证码正确,清除
 	
 				    //判断这些字段有没有空的，两个验证码先不加
 					if($_POST['register-phone']!=""&&$_POST['set-pwd']!=""&&$_POST['confirm-pwd']!="")
@@ -121,12 +124,8 @@ class RegisterController extends Controller {
                                   $this->error("注册失败", U('Home/Register/register'),3);
 						      }
 
-			            
-			           
 			            if($res==null)
 			            {
-					  	
-					      
 					       $registerData['phone'] = $_POST['register-phone'];
 					       $registerData['password'] = md5($_POST['set-pwd']);
 					       $registerData['regtime'] = date('y-m-d',time()); 
@@ -144,9 +143,6 @@ class RegisterController extends Controller {
 						    }else{
                               $this->error("注册失败", U('Home/Register/register'),3);
                              }
-
-
-					        
 					    }
 					    else
 					    {
@@ -158,6 +154,13 @@ class RegisterController extends Controller {
 					 else
 			          {
 			    	     echo "<script>alert('请填写完整注册内容');</script>";
+			    	     $this->error("注册失败", U('Home/Register/register'),3);
+			          }
+					  
+                     } //手机验证码
+			       else
+			          {
+			    	     echo "<script>alert('手机验证码错误');</script>";
 			    	     $this->error("注册失败", U('Home/Register/register'),3);
 			          }
 					  
@@ -175,7 +178,7 @@ class RegisterController extends Controller {
    }//函数括号
    
        /*
-	   * 验证码
+	   * thinkphp验证码
 	   */
        public function verify()
        {
@@ -193,8 +196,8 @@ class RegisterController extends Controller {
    
    
    /*
-    *检测验证码是否正确 
-     */
+    *检测thinkphp验证码是否正确 
+    */
     public function check_verify( $id = '')
     {    
        $verify = new \Think\Verify();    
@@ -203,13 +206,6 @@ class RegisterController extends Controller {
         $this->error('验证码错误，请重新输入',U('Home/Register/register'),3);
     }
       
-//	  public function checkPhoneMessage()
-//	  {
-//	  	$phoneNo = $_GET['phoneNo'];
-//	  	$this -> sendPhoneMessage($phoneNo);
-//	  	
-//		var_dump($param);
-//	  }
 
     /*
 	 * 发送短信验证码
@@ -232,33 +228,27 @@ class RegisterController extends Controller {
         }
 
         //短信验证码
-        $appId = "20d510c710bb496aa4cc5e11ed784abe";  //填写自己的
-//      $to = $_GET['phoneNo'];
-//		var_dump($_GET['phoneNo']);
+        $appId = "20d510c710bb496aa4cc5e11ed784abe";  
         $to = $_GET['phoneNo'];
         $templateId = "27418";
-        $param = $authnum;    //**********************这个值可用来检测验证码是否正确
-//      return $param;
-    
-      $arr = $ucpass -> templateSMS($appId,$to,$templateId,$param);
-      if (substr($arr,21,6) == 000000) 
-      {
-          //发送短信验证码成功
-			 echo "发送成功";
-      }
-      else{
-          //发送短信验证码失败
+        $param = $authnum;    
+       
+    $arr = $ucpass -> templateSMS($appId,$to,$templateId,$param);
+    if (substr($arr,21,6) == 000000) 
+    {
+       //发送短信验证码成功
+			 echo "验证码已发送给:".$_GET['phoneNo'];
+			 session('phoneCode',$param);
+	}
+    else{
+              //发送短信验证码失败
 			 echo "短信验证码发送失败，请重试";
-		     $this->error("注册失败", U('Home/Register/register'),3);
-      }
+        }
         
+    }
 
-//      $this -> checkPhoneMessage($param);  //将生成的短信验证码传给checkPhoneMessage()用于注册的判断
 
-    } 
-    
-	 
-   
+
 }
 
                     

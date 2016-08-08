@@ -23,15 +23,19 @@ class LoginController extends Controller {
 				if($_POST['login-name']!=""&&$_POST['login-pwd']!=""){
                 $student = M('student');
 				
-				$stuName = $_POST['login-name'];	//用户名 
+				$stuName = $_POST['login-name'];	//用户名  或  手机号码
 				$password = md5($_POST['login-pwd']);//密码
                 $result = $student -> where("stuName='%s' AND password='%s' ",$stuName,$password)->find();
+                $loginByName = $student -> where("stuName='%s' AND password='%s' ",$stuName,$password)->find();
+                $loginByPhone = $student -> where("phone='%s' AND password='%s' ",$stuName,$password)->find();
+				
 				//加验证码
 				/*...*/	 
 
-				if($result>0)
+				if($loginByName > 0 || $loginByPhone > 0)
 				{
-				  $_SESSION['stuName'] = $result['stuname']; 
+				  $_SESSION['phone'] = $loginByPhone['phone']; 
+				  $_SESSION['stuName'] = $loginByName['stuname']; 
                   $_SESSION['password'] = $result['password'];
 				  
                   $this->success('登录成功', U('Home/Index/index'),3);
@@ -61,15 +65,15 @@ class LoginController extends Controller {
 				if($_POST['login-name']!=""&&$_POST['login-pwd']!=""){
                 $teacher = M('teacher');
 				
-				$phone = $_POST['login-name'];	//用户名 
+				$phone = $_POST['login-name'];	//用户名 或 手机号码
 				$password = md5($_POST['login-pwd']);//密码
-                $result = $teacher -> where("phone='%s' AND password='%s' ",$phone,$password)->find();
-				//加验证码
-				/*...*/	 
-
-				if($result>0)
+                $loginByPhone = $teacher -> where("phone='%s' AND password='%s' ",$phone,$password)->find();
+                $loginByName = $teacher -> where("tname='%s' AND password='%s' ",$phone,$password)->find();
+				
+				if($loginByPhone > 0 || $loginByName >0)
 				{
 				  $_SESSION['phone'] = $result['phone']; 
+				  $_SESSION['tname'] = $result['phone']; 
                   $_SESSION['password'] = $result['password'];
 				  
                   $this->success('登录成功', U('Home/Index/index'),3);
@@ -91,10 +95,6 @@ class LoginController extends Controller {
 	   }
      } 	
 	   
-	   public function md5()
-	   {
-	   	var_dump(md5("aa123123"));
-	   }
 	   
 
 	   /*
