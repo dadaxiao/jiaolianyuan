@@ -5,10 +5,12 @@ use Think\Model;
 class IndexController extends Controller {
     public function index(){
     	
-		$name=$_SESSION['name'];
+		$name = $_SESSION['name'];
+		$face = $_SESSION['face'];
         $this->assign('name',$name);
-		$phone=$_SESSION['phone'];
-        $this->assign('phone',$phone);
+		$this->assign('face',$face);
+		
+
 		
     	$getCourseCate = $this -> getCourseCate();
 		$this -> assign('getCourseCate', $getCourseCate);

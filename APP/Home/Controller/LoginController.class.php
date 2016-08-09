@@ -29,14 +29,22 @@ class LoginController extends Controller {
                 $loginByName = $student -> where("stuName='%s' AND password='%s' ",$stuName,$password)->find();
                 $loginByPhone = $student -> where("phone='%s' AND password='%s' ",$stuName,$password)->find();
 				
-				//加验证码
-				/*...*/	 
 
-				if($loginByName > 0 || $loginByPhone > 0)
+                if($loginByName > 0 )
 				{
-				  $_SESSION['phone'] = $loginByPhone['phone']; 
+//				  $_SESSION['phone'] = $loginByName['phone']; 
 				  $_SESSION['name'] = $loginByName['stuname']; 
-                  $_SESSION['password'] = $result['password'];
+                  $_SESSION['face'] = $loginByName['face'];
+				  
+                  $this->success('登录成功', U('Home/Index/index'),3);
+				}	
+				
+
+				else if( $loginByPhone > 0)
+				{
+					//为了方便处理，将$_SESSION['phone'] 当作 $_SESSION['name']
+				  $_SESSION['name'] = $loginByPhone['phone']; 
+                  $_SESSION['face'] = $loginByPhone['face'];
 				  
                   $this->success('登录成功', U('Home/Index/index'),3);
 				}	  
@@ -45,6 +53,20 @@ class LoginController extends Controller {
 	                echo "<script>alert('信息有误，请尝试重新登陆！');</script>";
 					$this->error('登录失败', U('Home/Login/login'),3);
                 } 
+//				if($loginByName > 0 || $loginByPhone > 0)
+//				{
+//				  $_SESSION['phone'] = $loginByPhone['phone']; 
+//				  $_SESSION['name'] = $loginByName['stuname']; 
+//				  
+////                $_SESSION['password'] = $result['password'];
+//				  
+//                $this->success('登录成功', U('Home/Index/index'),3);
+//				}	  
+//				else
+//				{
+//	                echo "<script>alert('信息有误，请尝试重新登陆！');</script>";
+//					$this->error('登录失败', U('Home/Login/login'),3);
+//              } 
 				
 			}
 				
@@ -69,21 +91,31 @@ class LoginController extends Controller {
 				$password = md5($_POST['login-pwd']);//密码
                 $loginByPhone = $teacher -> where("phone='%s' AND password='%s' ",$phone,$password)->find();
                 $loginByName = $teacher -> where("tname='%s' AND password='%s' ",$phone,$password)->find();
-				
-				if($loginByPhone > 0 || $loginByName >0)
+				 
+				 if($loginByName > 0 )
 				{
-				  $_SESSION['phone'] = $result['phone']; 
-				  $_SESSION['name'] = $result['phone']; 
-                  $_SESSION['password'] = $result['password'];
+//				  $_SESSION['phone'] = $loginByName['phone']; 
+				  $_SESSION['name'] = $loginByName['tname']; 
+                  $_SESSION['face'] = $loginByName['face'];
 				  
                   $this->success('登录成功', U('Home/Index/index'),3);
 				}	
+				
+
+				else if( $loginByPhone > 0)
+				{
+					//为了方便处理，将$_SESSION['phone'] 当作 $_SESSION['name']
+				  $_SESSION['name'] = $loginByPhone['phone']; 
+                  $_SESSION['face'] = $loginByPhone['face'];
+				  
+                  $this->success('登录成功', U('Home/Index/index'),3);
+				}	  
 				else
 				{
 	                echo "<script>alert('信息有误，请尝试重新登陆！');</script>";
 					$this->error('登录失败', U('Home/Login/login'),3);
                 } 
-				
+
 			}
 				else
 				{
@@ -132,6 +164,6 @@ class LoginController extends Controller {
     public  function logout()
     { 
         session(null);
-        $this->success('欢迎再来',U('Home/Index/index'),1);
+        $this->success('欢迎再来',U('Home/Login/login'),1);
     }
 }

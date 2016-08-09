@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>教练缘</title>
+		<link href="__PUBLIC__/images/logo.ico"rel="icon" />
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-2.1.4.min.js" ></script>
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-2.2.1.min.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/js/coach.js"></script>
@@ -35,7 +36,7 @@
                       {
 						for (var i=0;i<datac.data.length;i++) {
                             //动态生成结点,并赋值id,二级分类名,二级分类对应的id,即cid
-							$('.children-list ').append('<li><a href="javascript:;">'+datac.data[i].classname+'</a></li>');
+							$('.children-list ').append('<li><a href="__MODULE__/Detail/detail/id/'+ datac.data[i].id+'">'+datac.data[i].classname+'</a></li>');
 						     }
 					   }
 					   //该课程尚无班级
@@ -109,21 +110,21 @@
 				<div class="heading">
 					<div class="heading-center">
 						<div class="logo">
-							<a href="http://localhost/jiaolianyuan/index.php/Home/Index/index.html"><img src="__PUBLIC__/images/web首页素材/logo.png" alt="logo" /></a>	
+							<a href="__MODULE__/Index/index"><img src="__PUBLIC__/images/web首页素材/logo.png" alt="logo" /></a>	
 						</div>
 						<div class="login-reg">
-										<if condition="($name neq '') OR ($phone neq '')"><p class="myp" style="width:120px;height: 60px;">欢迎您：<?php echo $name;echo $phone;?><span class="logout"><a href="__MODULE__/Login/logout">退出</a></span></p>
+							 <if condition="($name neq '') OR ($phone neq '')"><a href="#"><img src="__PUBLIC__/images/{$face}" width="28" height="28"></a><p class="myp" style="width:120px;height: 60px;">{$name}<span class="logout"><a href="__MODULE__/Login/logout">退出</a></span></p>
 							 <else />
 							
-							<div class="login">
-								<button><a href="http://localhost/jiaolianyuan/index.php/Home/Login/login.html">登录</a></button>
-							</div>
-							<div class="reg">
-									<button><a href="http://localhost/jiaolianyuan/index.php/Home/Register/register.html">注册</a></button>
-							</div>
+							 <div class="login">
+								    <button><a href="__MODULE__/Login/login">登录</a></button>
+							 </div>
+							 <div class="reg">
+									<button><a href="__MODULE__/Register/register">注册</a></button>
+							 </div>
 
 							            <!--<span><a href="http://localhost/jiaolianyuan/index.php/Home/Login/login.html">登录</a></span><span>|</span><span><a href="http://localhost/jiaolianyuan/index.php/Home/Register/register.html">注册</a></span>-->
-						                </if>
+						     </if>
 
 							           
 						</div>
@@ -163,7 +164,7 @@
 								<li class="first-list"><a href="javascript:;"><span>{$list['cname']}</span></a>
 									<hr />
 										<ul class="children-list">
-											<li><a href="javascript:;">{$classList['classname']}</a></li>
+											<!--<li><a href="javascript:;">{$classList['classname']}</a></li>-->
 										</ul>
 									
 								</li>
@@ -215,7 +216,7 @@
 							<ul>
 								<!--循环遍历热门课程图片-->
 								<volist name = "hotClassList" id = "hotClassList" empty = "暂无数据">
-								<li><a href="#"><img src="__PUBLIC__/images/{$hotClassList['classpic']}" /></a></li>
+								<li><a href="__MODULE__/Detail/detail/id/{$hotClassList['id']}"><img src="__PUBLIC__/images/{$hotClassList['classpic']}" /></a></li>
 							</volist>
 							</ul>
 						</div>
@@ -231,7 +232,7 @@
 								<ul>
 								<!-- 循环遍历8个PHP工程师课程 -->
 								<volist name = "phpData" id = "phpData" empty = "暂无数据">
-									<li><a href="#"><img src="__PUBLIC__/images/{$phpData['classpic']}"/></a></li>
+									<li><a href="__MODULE__/Detail/detail/id/{$phpData['id']}"><img src="__PUBLIC__/images/{$phpData['classpic']}"/></a></li>
 									
 								 </volist>  
 								</ul>
