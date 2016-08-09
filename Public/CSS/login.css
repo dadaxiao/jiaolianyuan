@@ -120,6 +120,30 @@ body{
 	outline:none;
 	width:260px;
 }
+.codes-box{
+	width:180px;
+	height: 38px;
+	border:1px solid #e1e1e1;
+	position:relative;
+	top:60px;
+	left:20px;
+	border-radius:5px;
+}
+.codes-box input{
+	width:170px;
+	height: 14px;
+	background: none;
+	border:none;
+	outline:none;
+	position:relative;
+	left:10px;
+	top:11px;
+}
+.codes-img{
+	position: relative;
+	top: 22px;
+	left: 216px;
+}
 .checked{
 	position:relative;
 	top:2px;
@@ -130,7 +154,7 @@ body{
 	line-height:25px;
 	width:50px;
 	position:relative;
-	top:60px;
+	top:20px;
 	color:#666;
 	font-size:14px;
 	display:block;
@@ -141,13 +165,13 @@ body{
 .checked-2{
 	right:20px;
 	float:right;
-	top:32px;
+	top:0px;
 	
 }
 
 #login-btn{
 	position:relative;
-	top:70px;
+	top:30px;
 	left:20px;
 	margin:-10px auto;
 	width:304px;

@@ -183,7 +183,7 @@ class RegisterController extends Controller {
        public function verify()
        {
             $config =    array( 
-            'fontSize'    =>    14,    // 验证码字体大小  
+            'fontSize'    =>    12,    // 验证码字体大小  
             'length'      =>    4,     // 验证码位数   
             'expire' => 60,//验证码的有效期（60秒）
             'useImgBg' => false,
@@ -228,9 +228,9 @@ class RegisterController extends Controller {
         }
 
         //短信验证码
-        $appId = "20d510c710bb496aa4cc5e11ed784abe";  
+        $appId = "0203050235fe4b369b4a72c18fc1f3f3";  
         $to = $_GET['phoneNo'];
-        $templateId = "27418";
+        $templateId = "27574";
         $param = $authnum;    
        
     $arr = $ucpass -> templateSMS($appId,$to,$templateId,$param);

@@ -30,7 +30,7 @@
                 <form id="" enctype="multipart/form-data" method="post" action="/jiaolianyuan/index.php/Home/Login/do_login">
                     <div class="login-box">
                         <span id="user-pic"class="login-label name-label" for="loginname"></span>
-                        <input class="login" id="login-name" type="text" name="login-name" placeholder="用户名"/>
+                        <input class="login" id="login-name" type="text" name="login-name" placeholder="用户名/手机号码"/>
                     </div>
                     <div class="login-box">
                         <label id="pwd-pic"class="login-label pwd-label" for="loginpwd"></label>
@@ -40,14 +40,15 @@
                     
                                     
                     <!--验证码框及其显示-->
-                    <div class="checked-1">
+                    <div class="codes-box">
+                     	<span id="verify"class="login-label name-label" for="verify"></span>
+                        <input class="" id="verify" type="text" name="verify" placeholder="验证码"/>
+                      </div>
+                    <div class="codes-img">
                     	<img src="/jiaolianyuan/index.php/Home/Login/verify"  alt="验证码"/>
                     </div>
                     <br />
-                     <div class="login-box">
-                     	<span id="verify"class="login-label name-label" for="verify"></span>
-                        <input class="login" id="verify" type="text" name="verify" placeholder="验证码"/>
-                      </div>
+                     
                     
                     
                     

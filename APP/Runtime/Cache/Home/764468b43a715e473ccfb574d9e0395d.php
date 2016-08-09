@@ -73,7 +73,7 @@
                      
                      
                       <!--验证码显示,位置可能要改-->
-                    <div class="checked-1">
+                    <div class="codes-img">
                     	<img src="/jiaolianyuan/index.php/Home/Register/verify"  alt="验证码"/>
                     </div>
                     <br />

@@ -53,17 +53,57 @@
 					
 					
 			});
+			
 //					
 			});
 				})
 					
 </script>
 		
+<script>
+				$(function(){
+					$("#searchContent").change(function(){
+					var	searchContent = $("#searchContent").val();
+			
+			$.ajax({
+					contentType:"application/json",
+					type : "get",
+					url : "http://localhost/jiaolianyuan/index.php/Home/Index/search",
+					data : {"searchContent":searchContent},
+					dataType : "json",
+					cache : "false",
+					async : true,
+					success : function(datac){
+                       
+                     if(datac.ret == 200)
+                      {
+//						for (var i=0;i<datac.data.length;i++) {
+                            //...//
+                            alert(datac.data);
+					   }
+					   //该课程尚无班级
+					   else
+					   {
+					   	//...//
+					   }
+ 
+
+					},
+					error: function(datac){
+						alert("出错啦")
+					}
+			    });
+			  });
+		   })
+					
+</script>
 		
 		
 		
 	</head>
 	<body>
+		
+		
 		<div class="contianer">
 			<header>
 				<div class="heading">
@@ -72,7 +112,20 @@
 							<a href="http://localhost/jiaolianyuan/index.php/Home/Index/index.html"><img src="__PUBLIC__/images/web首页素材/logo.png" alt="logo" /></a>	
 						</div>
 						<div class="login-reg">
-							<span><a href="http://localhost/jiaolianyuan/index.php/Home/Login/login.html">登录</a></span><span>|</span><span><a href="http://localhost/jiaolianyuan/index.php/Home/Register/register.html">注册</a></span>
+										<if condition="($name neq '') OR ($phone neq '')"><p class="myp" style="width:120px;height: 60px;">欢迎您：<?php echo $name;echo $phone;?><span class="logout"><a href="__MODULE__/Login/logout">退出</a></span></p>
+							 <else />
+							
+							<div class="login">
+								<button><a href="http://localhost/jiaolianyuan/index.php/Home/Login/login.html">登录</a></button>
+							</div>
+							<div class="reg">
+									<button><a href="http://localhost/jiaolianyuan/index.php/Home/Register/register.html">注册</a></button>
+							</div>
+
+							            <!--<span><a href="http://localhost/jiaolianyuan/index.php/Home/Login/login.html">登录</a></span><span>|</span><span><a href="http://localhost/jiaolianyuan/index.php/Home/Register/register.html">注册</a></span>-->
+						                </if>
+
+							           
 						</div>
 					</div>
 				</div>
@@ -98,7 +151,7 @@
 							<form>
 								<label>
 									<input type="button" value="" />
-									<input type="text"  value="" placeholder="请输入关键字…"/>
+									<input id = "searchContent" type="text"  value="" placeholder="请输入关键字…"/>
 								</label>
 							</form>
 						</div>
@@ -110,11 +163,7 @@
 								<li class="first-list"><a href="javascript:;"><span>{$list['cname']}</span></a>
 									<hr />
 										<ul class="children-list">
-								<!--<volist name = "classList" id = "classList" empty = "暂无数据">-->
-
 											<li><a href="javascript:;">{$classList['classname']}</a></li>
-											<!--</volist>-->
-											
 										</ul>
 									
 								</li>

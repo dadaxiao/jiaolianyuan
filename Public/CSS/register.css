@@ -134,8 +134,8 @@ body{
 }
 #codes-btn{
 	position:absolute;
-	top:0;
-	right:-108px;
+	top:190px;
+	right:20px;
 	height:36px;
 	width:92px;
 	background:#F2F2F2;
@@ -143,6 +143,12 @@ body{
 	color:#666;
 	border-radius:5px;
 	line-height:32px;
+}
+
+.codes-img{ 
+	position: absolute;
+	top:139px;
+	right: 20px;
 }
 #codes-btn:hover{
 	background:#e1e1e1;

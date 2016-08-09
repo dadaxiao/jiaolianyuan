@@ -42,17 +42,73 @@ a,li{
 	margin: 20px 0 30px 20px;
 }
 .login-reg{
-	width: 80px;
-	height: 30px;
-	background-color:#1AD5DC ;
+	width: 200px;
+	height: 60px;
+	/*background-color:#ccc ;*/
 	float: right;
 	display: inline-block;
 	position:absolute;
-	top: 40px;
+	top: 20px;
 	right: 0;
 	text-align: center;
+	/*position:relative;*/
 }
-.login-reg span ,.login-reg  a{
+.login{
+	
+	width: 60px;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 60px;
+}
+.login button{
+	font-size:20px ;
+	border: none;
+	outline: none;
+	width: 60px;
+	height: 30px;
+	
+	background: #1AD5DC;
+}
+.login-reg a{
+	color: #fff;
+}
+.login-reg a:hover{
+	color:#0000FF;
+}
+/*.login a:hover{
+	color: #0000FF;
+}
+.reg a:hover{
+	color: #0000FF;
+}*/
+.reg{
+	float: right;
+	width: 60px;
+	height: 30px;
+	position:absolute;
+	top:10px;
+	left: 140px;
+}
+.reg button{
+	font-size:20px ;
+	border: none;
+	outline: none;
+	width: 60px;
+	height: 30px;
+	color: #fff;
+	background: #1AD5DC;
+	
+}
+.login-reg .logout{
+	margin-left:10px ;
+	
+}
+.logout a{
+	font-size:14px ;
+	color: #000;
+	
+	}
+/*.login-reg span ,.login-reg  a{
 	width: 80px;
 	height: 30px;
 	line-height: 30px;
@@ -61,7 +117,7 @@ a,li{
 }
 .login-reg a:hover{
 	color: #097BF8;
-}
+}*/
 .nav{
 	width: 720px;
 	height: 70px;

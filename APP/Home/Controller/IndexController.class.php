@@ -5,6 +5,11 @@ use Think\Model;
 class IndexController extends Controller {
     public function index(){
     	
+		$name=$_SESSION['name'];
+        $this->assign('name',$name);
+		$phone=$_SESSION['phone'];
+        $this->assign('phone',$phone);
+		
     	$getCourseCate = $this -> getCourseCate();
 		$this -> assign('getCourseCate', $getCourseCate);
 		
@@ -68,8 +73,6 @@ class IndexController extends Controller {
 			// S("$cacheIndex",$return,120); //写入缓存，时间120s  
 			$this -> ajaxReturn($return);
 		}
-		 // var_dump($classList);
-		 // return $classList;
 		
 	}	
 	 
@@ -106,6 +109,16 @@ class IndexController extends Controller {
 		}
 		
 		
-	
+	/*
+	 * 搜索
+	 */
+	 public function search()
+	 {
+	 	$data['ret'] = "200";
+	 	
+	 	$data['data'] = "无";
+		
+		$this -> ajaxReturn($data);
+	 }
 	
 }

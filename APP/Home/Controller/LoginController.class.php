@@ -35,7 +35,7 @@ class LoginController extends Controller {
 				if($loginByName > 0 || $loginByPhone > 0)
 				{
 				  $_SESSION['phone'] = $loginByPhone['phone']; 
-				  $_SESSION['stuName'] = $loginByName['stuname']; 
+				  $_SESSION['name'] = $loginByName['stuname']; 
                   $_SESSION['password'] = $result['password'];
 				  
                   $this->success('登录成功', U('Home/Index/index'),3);
@@ -73,7 +73,7 @@ class LoginController extends Controller {
 				if($loginByPhone > 0 || $loginByName >0)
 				{
 				  $_SESSION['phone'] = $result['phone']; 
-				  $_SESSION['tname'] = $result['phone']; 
+				  $_SESSION['name'] = $result['phone']; 
                   $_SESSION['password'] = $result['password'];
 				  
                   $this->success('登录成功', U('Home/Index/index'),3);
@@ -129,9 +129,9 @@ class LoginController extends Controller {
 /*
  * 退出登录函数
  */
-    /*public  function logout()
+    public  function logout()
     { 
         session(null);
         $this->success('欢迎再来',U('Home/Index/index'),1);
-    }*/
+    }
 }
