@@ -5,10 +5,10 @@ use Think\Model;
 class IndexController extends Controller {
     public function index(){
     	
-		$name=$_SESSION['name'];
+		$name = $_SESSION['name'];
+		$face = $_SESSION['face'];
         $this->assign('name',$name);
-		$phone=$_SESSION['phone'];
-        $this->assign('phone',$phone);
+		$this->assign('face',$face);
 		
     	$getCourseCate = $this -> getCourseCate();
 		$this -> assign('getCourseCate', $getCourseCate);
@@ -42,7 +42,7 @@ class IndexController extends Controller {
 		
 		
 		/*
-		 *获取大的分类栏下的班级，  有点问题，要传参数++
+		 *获取大的分类栏下的班级，要传参数++
 		 */
 		public function getClassList()
 	 {
@@ -80,32 +80,55 @@ class IndexController extends Controller {
 	 /*
 	  * 热门教程
 	  */
-	   public function hotClass()
+	/*   public function hotClass()
 	 {
 	 	 $class = M("class");
-		 $hotClassList = $class -> field('id,classPic') -> limit(0,5) ->select() ;
-//		 var_dump($hotClassList);
+//		 $stu_class = M('stu_class');
+		 $hotClassList = $class -> field('id,classPic,className,classIntro') -> limit(0,5) ->select() ;
 		 return $hotClassList;
-		
+	}*/
+	 
+	 
+	  /*
+	  * 获取热门班级的人数
+	  */
+	  public function hotClass()
+	 {
+
+		 $model= new Model();
+		 for($i = 1; $i < 6; $i++ )
+		 {
+		  $data[$i] = $model -> query("select * from (select class.id,className,classIntro,classPic from `class` left join `stu_class` on class.id = classId) as a where id=$i");
+		  $data += $data;
+		 }
+		 return $data;
+		 
+		 
+		 
 	}
 	 
+	 
 	 /*
-	  * PHP工程师
+	  * PHP工程师,
 	  */
 	 	public function phpEngineer() 
 		{
+			$model =new Model();
 		 $course = M('cate');
 		 $class = M("class");
 		 $cname = 'PHP工程师';
 		 $where['cname'] = $cname;
           
-         //这两句找出PHP工程师对应的id 
+         //这两句找出PHP工程师对应的id ,即是父级ID
 		 $result = $course -> field('id') -> where($where) -> limit(0,1) -> select();
 		 $id = (int)($result[0]['id']);
 		 //找出8张PHP工程师的班级的图片
-		 $data = $class -> field('id,classPic') ->where('classCate='.$id) -> limit(3,8) -> select();
-		 // var_dump($data);
-		 return $data;
+		 
+//		  $data[$i] = $model -> query("select * from (select class.id,className,classIntro,classPic from `class` left join `cate` on class.id = classId where classId=$id) as a ");
+//		  $data['php'] = $model -> query("select * from ((select class.id,className,classIntro,classPic from `class` where classCate=$id) as a left join `stu_class` on a.id=`stu_class`.classId)");
+		 $data = $class -> field('id,classPic,classIntro,className') ->where('classCate='.$id) -> limit(3,8) -> select();
+//		 dump($data);
+		 return $data; 
 		}
 		
 		

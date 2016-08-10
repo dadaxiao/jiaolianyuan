@@ -36,7 +36,7 @@
     {
     	var phoneNo = document.getElementById("register-phone").value;
     	document.getElementById("getPhoneCodeResult").innerHTML = "发送中...";  //因为发送时间比较长，所以先显示发送中
-    	var url = "http://localhost/jiaolianyuan/index.php/Home/Register/sendPhoneMessage?phoneNo="+phoneNo;
+    	var url = "localhost/jiaolianyuan/index.php/Home/Register/sendPhoneMessage?phoneNo="+phoneNo;
     	getJson(url,function (result) {
        alert(result);
        document.getElementById("getPhoneCodeResult").innerHTML = "";   //去点发送中字样
@@ -49,7 +49,7 @@
 <!--logo-->
 <div id="top">
 	<div id="logo">
-    	<a href="http://localhost/jiaolianyuan/index.php/Home/Index/index.html" target="_blank"><img  src="__PUBLIC__/images/logo.png" alt="教练缘" /></a><b></b>
+    	<a href="__MODULE__/Index/index" target="_blank"><img  src="__PUBLIC__/images/logo.png" alt="教练缘" /></a><b></b>
     </div>
 </div>
 
@@ -59,7 +59,7 @@
     	<div id="register">
         	<div class="register-form">
                 <h2>用户注册</h2>
-                <b>已有账号>></b><a target="_blank" href="http://localhost/jiaolianyuan/index.php/Home/Login/login.html" >在线登录</a>
+                <b>已有账号>></b><a target="_blank" href="__MODULE__/Login/login" >在线登录</a>
                
                <button id="codes-btn"  name="get-codes" onclick="sendPhoneMessage()">获取验证码</button>  <!--不能放在form表单，不然会做提交操作-->
               <!--显示发送中字样-->

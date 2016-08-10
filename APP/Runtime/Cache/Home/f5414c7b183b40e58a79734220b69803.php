@@ -16,7 +16,7 @@
 <!--logo-->
 <div id="top">
 	<div id="logo">
-    	<a href="http://localhost/jiaolianyuan/index.php/Home/Index/index.html" target="_blank"><img  src="/jiaolianyuan/Public/images/logo.png" alt="教练缘" /></a><b></b>
+    	<a href="/jiaolianyuan/index.php/Home/Index/index" target="_blank"><img  src="/jiaolianyuan/Public/images/logo.png" alt="教练缘" /></a><b></b>
     </div>
 </div>
 
@@ -26,7 +26,7 @@
     	<div id="login">
         	<div class="login-form">
                 <h2>登录教练缘</h2>
-                <a href="http://localhost/jiaolianyuan/index.php/Home/register/register.html" target="_blank">注册</a>
+                <a href="/jiaolianyuan/index.php/Home/register/register" target="_blank">注册</a>
                 <form id="" enctype="multipart/form-data" method="post" action="/jiaolianyuan/index.php/Home/Login/do_login">
                     <div class="login-box">
                         <span id="user-pic"class="login-label name-label" for="loginname"></span>
