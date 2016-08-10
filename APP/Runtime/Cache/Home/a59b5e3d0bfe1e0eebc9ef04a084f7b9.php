@@ -167,7 +167,11 @@
 								<!--循环遍历课程名-->
 								<?php if(is_array($getCourseCate)): $i = 0; $__LIST__ = $getCourseCate;if( count($__LIST__)==0 ) : echo "暂无数据" ;else: foreach($__LIST__ as $key=>$list): $mod = ($i % 2 );++$i;?><li class="first-list"><a href="javascript:;"><span><?php echo ($list['cname']); ?></span></a>
 									<hr />
+<<<<<<< HEAD
 										<ul class="children-list" style="background:url(/jiaolianyuan/Public/images/guide-background/<?php echo ($list['cname']); ?>.jpg) no-repeat;">
+=======
+										<ul class="children-list">
+>>>>>>> 115c513af13f58aac6bd1a93d85769f81a577303
 											<!--<li><a href="javascript:;"><?php echo ($classList['classname']); ?></a></li>-->
 										</ul>
 									
@@ -216,6 +220,7 @@
 							<p>热门班级</p>
 							<ul>
 								<!--循环遍历热门课程图片-->
+<<<<<<< HEAD
 								<?php if(is_array($hotClassList)): $i = 0; $__LIST__ = array_slice($hotClassList,0,5,true);if( count($__LIST__)==0 ) : echo "暂无数据" ;else: foreach($__LIST__ as $key=>$hotClassList): $mod = ($i % 2 );++$i;?><li><a href="/jiaolianyuan/index.php/Home/Detail/detail/id/<?php echo ($hotClassList[0]['id']); ?>"><img src="/jiaolianyuan/Public/images/<?php echo ($hotClassList[0]['classpic']); ?>" />
 								<div class="tip_info">
 									<p class="big_word"><?php echo ($hotClassList[0]['classname']); ?></p>
@@ -225,6 +230,9 @@
 								<div class="box_bottom"><span ><?php echo count($hotClassList) ?></span>人在学</div>
 								</a></li><?php endforeach; endif; else: echo "暂无数据" ;endif; ?>
 								
+=======
+								<?php if(is_array($hotClassList)): $i = 0; $__LIST__ = $hotClassList;if( count($__LIST__)==0 ) : echo "暂无数据" ;else: foreach($__LIST__ as $key=>$hotClassList): $mod = ($i % 2 );++$i;?><li><a href="/jiaolianyuan/index.php/Home/Detail/detail/id/<?php echo ($hotClassList['id']); ?>"><img src="/jiaolianyuan/Public/images/<?php echo ($hotClassList['classpic']); ?>" /></a></li><?php endforeach; endif; else: echo "暂无数据" ;endif; ?>
+>>>>>>> 115c513af13f58aac6bd1a93d85769f81a577303
 							</ul>
 							
 						</div>
@@ -241,6 +249,7 @@
 							<div class="classes-right">
 								<ul>
 								<!-- 循环遍历8个PHP工程师课程 -->
+<<<<<<< HEAD
 								<?php if(is_array($phpData)): $i = 0; $__LIST__ = $phpData;if( count($__LIST__)==0 ) : echo "暂无数据" ;else: foreach($__LIST__ as $key=>$phpData): $mod = ($i % 2 );++$i;?><li><a href="/jiaolianyuan/index.php/Home/Detail/detail/id/<?php echo ($phpData['id']); ?>"><img src="/jiaolianyuan/Public/images/<?php echo ($phpData['classpic']); ?>"/>
 										<div class="pic_info">
 										<p class="title"><?php echo ($phpData['classname']); ?></p>
@@ -248,6 +257,9 @@
 										<p class="num"><span>12564</span>人在学</p>
 									</div>
 									</a></li><?php endforeach; endif; else: echo "暂无数据" ;endif; ?>  
+=======
+								<?php if(is_array($phpData)): $i = 0; $__LIST__ = $phpData;if( count($__LIST__)==0 ) : echo "暂无数据" ;else: foreach($__LIST__ as $key=>$phpData): $mod = ($i % 2 );++$i;?><li><a href="/jiaolianyuan/index.php/Home/Detail/detail/id/<?php echo ($phpData['id']); ?>"><img src="/jiaolianyuan/Public/images/<?php echo ($phpData['classpic']); ?>"/></a></li><?php endforeach; endif; else: echo "暂无数据" ;endif; ?>  
+>>>>>>> 115c513af13f58aac6bd1a93d85769f81a577303
 								</ul>
 							</div>
 						</div>

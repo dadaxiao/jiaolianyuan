@@ -9,6 +9,11 @@ class IndexController extends Controller {
 		$face = $_SESSION['face'];
         $this->assign('name',$name);
 		$this->assign('face',$face);
+<<<<<<< HEAD
+=======
+		
+
+>>>>>>> 115c513af13f58aac6bd1a93d85769f81a577303
 		
     	$getCourseCate = $this -> getCourseCate();
 		$this -> assign('getCourseCate', $getCourseCate);

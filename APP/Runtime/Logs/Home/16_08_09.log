@@ -20844,6 +20844,7 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
 
+<<<<<<< HEAD
 [ 2016-08-09T22:27:37+08:00 ] ::1 /jiaolianyuan/index.php
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
@@ -25742,3 +25743,5 @@ SQL: SHOW COLUMNS FROM `cate` [ RunTime:0.0029s ]
 SQL: SELECT `id` FROM `cate` WHERE `cname` = 'HTML5工程师'  [ RunTime:0.0002s ]
 SQL: SELECT `id`,`className` FROM `class` WHERE ( classCate=4 )  [ RunTime:0.0002s ]
 
+=======
+>>>>>>> 115c513af13f58aac6bd1a93d85769f81a577303

@@ -169,7 +169,11 @@
 								<volist name = "getCourseCate" id = "list" empty = "暂无数据">
 								<li class="first-list"><a href="javascript:;"><span>{$list['cname']}</span></a>
 									<hr />
+<<<<<<< HEAD
 										<ul class="children-list" style="background:url(__PUBLIC__/images/guide-background/{$list['cname']}.jpg) no-repeat;">
+=======
+										<ul class="children-list">
+>>>>>>> 115c513af13f58aac6bd1a93d85769f81a577303
 											<!--<li><a href="javascript:;">{$classList['classname']}</a></li>-->
 										</ul>
 									
@@ -220,6 +224,7 @@
 							<p>热门班级</p>
 							<ul>
 								<!--循环遍历热门课程图片-->
+<<<<<<< HEAD
 								<volist name = "hotClassList" id = "hotClassList"   offset="0" length='5' empty = "暂无数据">
 								<li><a href="__MODULE__/Detail/detail/id/{$hotClassList[0]['id']}"><img src="__PUBLIC__/images/{$hotClassList[0]['classpic']}" />
 								<div class="tip_info">
@@ -229,6 +234,10 @@
 									
 								<div class="box_bottom"><span ><?php echo count($hotClassList) ?></span>人在学</div>
 								</a></li>
+=======
+								<volist name = "hotClassList" id = "hotClassList" empty = "暂无数据">
+								<li><a href="__MODULE__/Detail/detail/id/{$hotClassList['id']}"><img src="__PUBLIC__/images/{$hotClassList['classpic']}" /></a></li>
+>>>>>>> 115c513af13f58aac6bd1a93d85769f81a577303
 							</volist>
 								
 							</ul>
@@ -250,6 +259,7 @@
 								<ul>
 								<!-- 循环遍历8个PHP工程师课程 -->
 								<volist name = "phpData" id = "phpData" empty = "暂无数据">
+<<<<<<< HEAD
 									<li><a href="__MODULE__/Detail/detail/id/{$phpData['id']}"><img src="__PUBLIC__/images/{$phpData['classpic']}"/>
 										<div class="pic_info">
 										<p class="title">{$phpData['classname']}</p>
@@ -257,6 +267,9 @@
 										<p class="num"><span>12564</span>人在学</p>
 									</div>
 									</a></li>
+=======
+									<li><a href="__MODULE__/Detail/detail/id/{$phpData['id']}"><img src="__PUBLIC__/images/{$phpData['classpic']}"/></a></li>
+>>>>>>> 115c513af13f58aac6bd1a93d85769f81a577303
 									
 								 </volist>  
 								</ul>
